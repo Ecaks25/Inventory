@@ -7,6 +7,8 @@ use App\Models\Bpg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Spatie\SimpleExcel\SimpleExcelReader;
+use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class TtpbController extends Controller
 {
@@ -189,6 +191,51 @@ class TtpbController extends Controller
         session()->put("ttpb_preview_ids_{$role}", $allIds);
 
         return redirect()->route("{$role}.ttpb.preview");
+    }
+
+    public function export()
+    {
+        $columns = [
+            'tanggal', 'no_ttpb', 'lot_number', 'nama_barang', 'qty_awal',
+            'qty_aktual', 'qty_loss', 'persen_loss', 'kadar_air', 'deviasi',
+            'coly', 'spec', 'keterangan', 'dari', 'ke',
+        ];
+
+        $rows = Ttpb::all()->map(fn ($record) => collect($record->toArray())->only($columns)->toArray());
+
+        return response()->streamDownload(function () use ($rows) {
+            SimpleExcelWriter::create('php://output')->addRows($rows);
+        }, 'ttpb.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,csv,xls',
+        ]);
+
+        $columns = [
+            'tanggal', 'no_ttpb', 'lot_number', 'nama_barang', 'qty_awal',
+            'qty_aktual', 'qty_loss', 'persen_loss', 'kadar_air', 'deviasi',
+            'coly', 'spec', 'keterangan', 'dari', 'ke',
+        ];
+
+        $rows = SimpleExcelReader::create($request->file('file')->getRealPath())->getRows();
+
+        $role = null;
+        foreach ($rows as $row) {
+            $data = collect($row)->only($columns)->toArray();
+            $data['qty_awal'] = $this->normalizeNumber($data['qty_awal'] ?? null);
+            $data['qty_aktual'] = $this->normalizeNumber($data['qty_aktual'] ?? null);
+            $data['qty_loss'] = $data['qty_loss'] ?? (($data['qty_awal'] ?? 0) - ($data['qty_aktual'] ?? 0));
+
+            $record = Ttpb::create($data);
+            $this->storeRoleSpecificRecords($data);
+
+            $role ??= $data['dari'] ?? null;
+        }
+
+        return redirect()->route(($role ?? 'gudang') . '.ttpb');
     }
 
     /**

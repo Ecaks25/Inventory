@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bpg;
 use Illuminate\Http\Request;
+use Spatie\SimpleExcel\SimpleExcelReader;
+use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class BpgController extends Controller
 {
@@ -75,6 +77,46 @@ class BpgController extends Controller
         $validated['qty_loss'] = ($validated['qty'] ?? 0) - ($validated['qty_aktual'] ?? 0);
 
         Bpg::create($validated);
+
+        return redirect()->route('gudang.stock');
+    }
+
+    public function export()
+    {
+        $columns = [
+            'tanggal', 'no_bpg', 'lot_number', 'supplier', 'nomor_mobil',
+            'nama_barang', 'qty', 'qty_aktual', 'qty_loss', 'coly',
+            'diterima', 'ttpb',
+        ];
+
+        $rows = Bpg::all()->map(fn ($bpg) => collect($bpg->toArray())->only($columns)->toArray());
+
+        return response()->streamDownload(function () use ($rows) {
+            SimpleExcelWriter::create('php://output')->addRows($rows);
+        }, 'bpg.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,csv,xls',
+        ]);
+
+        $columns = [
+            'tanggal', 'no_bpg', 'lot_number', 'supplier', 'nomor_mobil',
+            'nama_barang', 'qty', 'qty_aktual', 'qty_loss', 'coly',
+            'diterima', 'ttpb',
+        ];
+
+        $rows = SimpleExcelReader::create($request->file('file')->getRealPath())->getRows();
+
+        foreach ($rows as $row) {
+            $data = collect($row)->only($columns)->toArray();
+            $data['qty'] = $this->normalizeNumber($data['qty'] ?? null);
+            $data['qty_aktual'] = $this->normalizeNumber($data['qty_aktual'] ?? null);
+            $data['qty_loss'] = $data['qty_loss'] ?? (($data['qty'] ?? 0) - ($data['qty_aktual'] ?? 0));
+            Bpg::create($data);
+        }
 
         return redirect()->route('gudang.stock');
     }
