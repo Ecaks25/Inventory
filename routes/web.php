@@ -23,6 +23,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('bpg', BpgController::class)->only(['edit', 'update', 'destroy']);
     Route::resource('ttpb', TtpbController::class)->only(['edit', 'update', 'destroy']);
+    Route::get('bpg/export', [BpgController::class, 'export'])->name('bpg.export');
+    Route::post('bpg/import', [BpgController::class, 'import'])->name('bpg.import');
+    Route::get('ttpb/export', [TtpbController::class, 'export'])->name('ttpb.export');
+    Route::post('ttpb/import', [TtpbController::class, 'import'])->name('ttpb.import');
 
     $roles = config('roles');
 
