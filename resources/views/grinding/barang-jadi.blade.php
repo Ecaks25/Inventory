@@ -2,7 +2,7 @@
 <x-layouts.app :title="__('Grinding Barang Jadi')">
   <div class="card">
     <div class="card-header">
-      <h5 class="card-title mb-0">{{ __('Barang Jadi') }}</h5>
+      <h5 class="card-title mb-0">{{ __('Giling Halus') }}</h5>
     </div>
     <div class="card-body">
       <div class="table-responsive text-nowrap">

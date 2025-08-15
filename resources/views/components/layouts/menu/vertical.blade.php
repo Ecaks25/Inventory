@@ -134,13 +134,13 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('grinding.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('grinding.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('grinding.stock') }}" wire:navigate>Giling Setengah Jadi</a>
               </li>
               <li class="menu-item {{ request()->routeIs('grinding.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('grinding.monitoring') }}" wire:navigate>Monitoring</a>
               </li>
               <li class="menu-item {{ request()->routeIs('grinding.barang_jadi') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('grinding.barang_jadi') }}" wire:navigate>Barang Jadi</a>
+                <a class="menu-link" href="{{ route('grinding.barang_jadi') }}" wire:navigate>Giling Halus</a>
               </li>
               <li class="menu-item {{ request()->routeIs('grinding.ttpb') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('grinding.ttpb') }}" wire:navigate>TTPB</a>

@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title mb-0">{{ __('Stock') }}</h5>
+        <h5 class="card-title mb-0">{{ __('Giling Setengah Jadi') }}</h5>
     </div>
     <div class="card-body">
 @include('partials.month-filter')
