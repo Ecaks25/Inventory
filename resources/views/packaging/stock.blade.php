@@ -1,9 +1,9 @@
-@section('title', __('Packaging Stock'))
-<x-layouts.app :title="__('Packaging Stock')">
+@section('title', __('Packaging Terima TTPB'))
+<x-layouts.app :title="__('Packaging Terima TTPB')">
 
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title mb-0">{{ __('Stock') }}</h5>
+        <h5 class="card-title mb-0">{{ __('Terima TTPB') }}</h5>
     </div>
     <div class="card-body">
 @include('partials.month-filter')

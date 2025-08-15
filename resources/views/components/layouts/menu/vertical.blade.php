@@ -31,7 +31,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('gudang.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('gudang.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('gudang.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('gudang.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('gudang.monitoring') }}" wire:navigate>Monitoring</a>
@@ -51,7 +51,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('pencucian.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('pencucian.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('pencucian.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('pencucian.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('pencucian.monitoring') }}" wire:navigate>Monitoring</a>
@@ -71,7 +71,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('pengeringan.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('pengeringan.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('pengeringan.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('pengeringan.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('pengeringan.monitoring') }}" wire:navigate>Monitoring</a>
@@ -91,7 +91,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('blower.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('blower.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('blower.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('blower.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('blower.monitoring') }}" wire:navigate>Monitoring</a>
@@ -111,7 +111,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('mixing.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('mixing.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('mixing.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('mixing.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('mixing.monitoring') }}" wire:navigate>Monitoring</a>
@@ -157,7 +157,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('packaging.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('packaging.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('packaging.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('packaging.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('packaging.monitoring') }}" wire:navigate>Monitoring</a>
@@ -177,7 +177,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('finish_good.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('finish_good.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('finish_good.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('finish_good.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('finish_good.monitoring') }}" wire:navigate>Monitoring</a>
@@ -199,7 +199,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('gudang.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('gudang.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('gudang.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('gudang.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('gudang.monitoring') }}" wire:navigate>Monitoring</a>
@@ -221,7 +221,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('pencucian.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('pencucian.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('pencucian.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('pencucian.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('pencucian.monitoring') }}" wire:navigate>Monitoring</a>
@@ -243,7 +243,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('pengeringan.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('pengeringan.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('pengeringan.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('pengeringan.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('pengeringan.monitoring') }}" wire:navigate>Monitoring</a>
@@ -265,7 +265,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('blower.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('blower.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('blower.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('blower.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('blower.monitoring') }}" wire:navigate>Monitoring</a>
@@ -287,7 +287,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('mixing.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('mixing.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('mixing.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('mixing.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('mixing.monitoring') }}" wire:navigate>Monitoring</a>
@@ -312,7 +312,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('grinding.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('grinding.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('grinding.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('grinding.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('grinding.monitoring') }}" wire:navigate>Monitoring</a>
@@ -337,7 +337,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('packaging.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('packaging.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('packaging.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('packaging.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('packaging.monitoring') }}" wire:navigate>Monitoring</a>
@@ -359,7 +359,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('finish_good.stock') ? 'active' : '' }}">
-                <a class="menu-link" href="{{ route('finish_good.stock') }}" wire:navigate>Stock</a>
+                <a class="menu-link" href="{{ route('finish_good.stock') }}" wire:navigate>Terima TTPB</a>
               </li>
               <li class="menu-item {{ request()->routeIs('finish_good.monitoring') ? 'active' : '' }}">
                 <a class="menu-link" href="{{ route('finish_good.monitoring') }}" wire:navigate>Monitoring</a>

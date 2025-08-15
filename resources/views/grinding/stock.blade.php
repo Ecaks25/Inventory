@@ -1,5 +1,5 @@
-@section('title', __('Grinding Stock'))
-<x-layouts.app :title="__('Grinding Stock')">
+@section('title', __('Grinding Terima TTPB'))
+<x-layouts.app :title="__('Grinding Terima TTPB')">
 
 <div class="card">
     <div class="card-header">
