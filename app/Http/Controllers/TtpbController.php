@@ -201,11 +201,13 @@ class TtpbController extends Controller
             'coly', 'spec', 'keterangan', 'dari', 'ke',
         ];
 
-        $rows = Ttpb::all()->map(fn ($record) => collect($record->toArray())->only($columns)->toArray());
+        $rows = Ttpb::all()
+            ->map(fn ($record) => collect($record->toArray())->only($columns)->toArray())
+            ->toArray();
 
-        return response()->streamDownload(function () use ($rows) {
-            SimpleExcelWriter::create('php://output')->addRows($rows);
-        }, 'ttpb.xlsx');
+        return SimpleExcelWriter::streamDownload('ttpb.xlsx')
+            ->addRows($rows)
+            ->toBrowser();
     }
 
     public function import(Request $request)
@@ -223,17 +225,17 @@ class TtpbController extends Controller
         $rows = SimpleExcelReader::create($request->file('file')->getRealPath())->getRows();
 
         $role = null;
-        foreach ($rows as $row) {
+        $rows->each(function (array $row) use ($columns, &$role) {
             $data = collect($row)->only($columns)->toArray();
             $data['qty_awal'] = $this->normalizeNumber($data['qty_awal'] ?? null);
             $data['qty_aktual'] = $this->normalizeNumber($data['qty_aktual'] ?? null);
             $data['qty_loss'] = $data['qty_loss'] ?? (($data['qty_awal'] ?? 0) - ($data['qty_aktual'] ?? 0));
 
-            $record = Ttpb::create($data);
+            Ttpb::create($data);
             $this->storeRoleSpecificRecords($data);
 
             $role ??= $data['dari'] ?? null;
-        }
+        });
 
         return redirect()->route(($role ?? 'gudang') . '.ttpb');
     }
