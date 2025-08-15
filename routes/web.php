@@ -41,7 +41,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get("{$role}/monitoring", [RoleController::class, 'monitoring'])->defaults('role', $role)->name("{$role}.monitoring");
     }
 
-    Route::view('mixing/barang-jadi', 'mixing.barang-jadi', ['role' => 'mixing'])
+    Route::get('mixing/barang-jadi', [RoleController::class, 'barangJadi'])
+        ->defaults('role', 'mixing')
         ->name('mixing.barang_jadi');
     Route::view('grinding/barang-jadi', 'grinding.barang-jadi', ['role' => 'grinding'])
         ->name('grinding.barang_jadi');
