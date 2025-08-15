@@ -237,6 +237,23 @@ class RoleController extends Controller
         ]);
     }
 
+    public function barangJadi(string $role)
+    {
+        abort_unless(in_array($role, $this->roles), 404);
+
+        $records = Ttpb::where('ke', $role)
+            ->select('nama_barang')
+            ->selectRaw('SUM(qty_aktual) as total_qty')
+            ->groupBy('nama_barang')
+            ->orderBy('nama_barang')
+            ->get();
+
+        return view("{$role}.barang-jadi", [
+            'role' => $role,
+            'records' => $records,
+        ]);
+    }
+
     public function gudangBpg(string $lotNumber)
     {
         return Bpg::where('lot_number', $lotNumber)

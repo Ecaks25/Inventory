@@ -9,14 +9,21 @@
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>{{ __('Nama Produk') }}</th>
+              <th>{{ __('Nama Barang') }}</th>
               <th>{{ __('QTY') }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td colspan="2" class="text-center">{{ __('Belum ada data') }}</td>
-            </tr>
+            @forelse($records as $item)
+              <tr>
+                <td>{{ $item->nama_barang }}</td>
+                <td>{{ $item->total_qty }}</td>
+              </tr>
+            @empty
+              <tr>
+                <td colspan="2" class="text-center">{{ __('Belum ada data') }}</td>
+              </tr>
+            @endforelse
           </tbody>
         </table>
       </div>
