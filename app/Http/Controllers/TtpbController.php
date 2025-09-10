@@ -193,7 +193,7 @@ class TtpbController extends Controller
         return redirect()->route("{$role}.ttpb.preview");
     }
 
-    public function export()
+    public function export(Request $request)
     {
         $columns = [
             'tanggal', 'no_ttpb', 'lot_number', 'nama_barang', 'qty_awal',
@@ -201,11 +201,18 @@ class TtpbController extends Controller
             'coly', 'spec', 'keterangan', 'dari', 'ke',
         ];
 
-        $rows = Ttpb::all()
+        $query = Ttpb::query();
+        if ($role = $request->query('role')) {
+            $query->where('dari', $role);
+        }
+
+        $rows = $query->get()
             ->map(fn ($record) => collect($record->toArray())->only($columns)->toArray())
             ->toArray();
 
-        return SimpleExcelWriter::streamDownload('ttpb.xlsx')
+        $filename = ($role ?? 'ttpb') . '.xlsx';
+
+        return SimpleExcelWriter::streamDownload($filename)
             ->addRows($rows)
             ->toBrowser();
     }
