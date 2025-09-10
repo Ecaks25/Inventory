@@ -7,6 +7,16 @@
     </div>
     <div class="card-body">
         <a href="{{ route('gudang.stock.create') }}" class="btn btn-primary mb-4">{{ __('Input BPG') }}</a>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+            <a href="{{ route('bpg.export') }}" class="btn btn-success">{{ __('Export') }}</a>
+            <form action="{{ route('bpg.import') }}" method="POST" enctype="multipart/form-data" class="d-flex gap-2">
+                @csrf
+                <input type="file" name="file" class="form-control" required>
+                <button type="submit" class="btn btn-secondary">{{ __('Import') }}</button>
+            </form>
+        </div>
+
         @include('partials.month-filter')
         <div class="table-responsive text-nowrap">
             <table class="table table-striped table-bordered">
